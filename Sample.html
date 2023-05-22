@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <title>Image Slider</title> -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    .slider-image {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-container {
+      position: relative;
+    }
+
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 400px;
+      height: 800px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .slider-button-left {
+      left: 10px;
+    }
+
+    .slider-button-right {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <h1>Image Slider</h1> -->
+
+  <div class="slider-container">
+    <button class="slider-button slider-button-left"></button>
+    <div id="slider">
+      <img class="slider-image" src="Day&Schedule.png" alt="Image 1">
+      <img class="slider-image" src="Socialaccoutnc.png" alt="Image 2">
+      <img class="slider-image" src="Social accounts.png" alt="Image 3">
+      <img class="slider-image" src="Content planner.png" alt="Image 4">
+      <img class="slider-image" src="Edit Pop-up.png" alt="Image 6">
+      <img class="slider-image" src="Calendar view.png" alt="Image 5">
+      <img class="slider-image" src="Post room.png" alt="Image 7">
+      <img class="slider-image" src="Post editor.png" alt="Image 8">
+      <img class="slider-image" src="Settings.png" alt="Image 9">
+    </div>
+    <button class="slider-button slider-button-right"></button>
+  </div>
+
+  <script>
+    var sliderImages = document.getElementsByClassName("slider-image");
+    var currentIndex = 0;
+
+    function showImage(index) {
+      for (var i = 0; i < sliderImages.length; i++) {
+        sliderImages[i].style.display = "none";
+      }
+      sliderImages[index].style.display = "block";
+    }
+
+    function nextImage() {
+      currentIndex++;
+      if (currentIndex >= sliderImages.length) {
+        currentIndex = 0;
+      }
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = sliderImages.length - 1;
+      }
+      showImage(currentIndex);
+    }
+
+    showImage(currentIndex);
+
+    var sliderButtonLeft = document.querySelector(".slider-button-left");
+    sliderButtonLeft.addEventListener("click", prevImage);
+
+    var sliderButtonRight = document.querySelector(".slider-button-right");
+    sliderButtonRight.addEventListener("click", nextImage);
+  </script>
+</body>
+</html>
+
